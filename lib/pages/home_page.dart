@@ -34,32 +34,19 @@ class _HomePageState extends State<HomePage> {
         elevation: isOpen ? 5 : 0,
       ),
       floatingActionButton: AnimatedContainer(
-        padding: EdgeInsets.all(15),
         duration: Duration(milliseconds: 500),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
           color: Colors.blue,
         ),
-        width: isOpen ? 200 : 55,
-        child: InkWell(
-          onTap: () {},
+        width: isOpen ? 170 : 50,
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Icon(Icons.message, color: Colors.white),
-              SizedBox(width: isOpen ? 10 : 0),
-              isOpen
-                  ? Text(
-                      "Nova mensagem",
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(color: Colors.white),
-                    )
-                  : Container(
-                      height: 0,
-                      width: 0,
-                    )
+              _textTogleAnimated(isOpen)
             ],
           ),
-        ),
       ),
       body: ListView.builder(
         controller: _controller,
@@ -75,4 +62,15 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+  _textTogleAnimated(isOpen) => AnimatedContainer(
+      duration: Duration(milliseconds: 500),
+      width: isOpen ? 120 : 0,
+      height: 45,
+      child: Center(
+          child: Text(
+        "Nova mensagem",
+        overflow: TextOverflow.ellipsis,
+        style: TextStyle(color: Colors.white),
+      )));
 }
